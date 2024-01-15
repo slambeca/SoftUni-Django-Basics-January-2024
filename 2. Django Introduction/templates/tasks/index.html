@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    {% if tasks_count == 0 %}
+        <h2>You have no tasks!</h2>
+    {% elif tasks_count == 1 %}
+        <h2>You have only one task!</h2>
+        <ol>
+            {% for task in tasks %}
+                <li>
+                    <p><b>{{ task.title }}</b></p>
+                    <p>Description: {{ task.description }}</p>
+                    <p>Is the current task completed: <i>{{ task.is_completed }}</i></p>
+                </li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <ol>
+            {% for task in tasks %}
+                <li>
+                     <p><b>{{ task.title }}</b></p>
+                    <p>Description: {{ task.description }}</p>
+                    <p>Is the current task completed: <i>{{ task.is_completed }}</i></p>
+                </li>
+            {% endfor %}
+        </ol>
+    {% endif %}
+    <h3>The count of the tasks is: {{ tasks_count }}</h3>
+    {% if tasks_count > 0 %}
+        <h4 style="color: green"> Completed tasks: {{ tasks_completed.count }}</h4>
+        <h4 style="color: red"> Uncompleted tasks: {{ tasks_uncompleted.count }}</h4>
+    {% endif %}
+</body>
+</html>
