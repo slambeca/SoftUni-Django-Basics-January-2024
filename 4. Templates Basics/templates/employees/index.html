@@ -1,0 +1,92 @@
+<style>
+    body {
+        padding: 10px;
+        background: lightgoldenrodyellow;
+    }
+
+    .young {
+        color: blueviolet;
+    }
+
+    .not-that-young {
+        color: aqua;
+    }
+</style>
+
+<h1 style="color: blue">{{ title }}</h1>
+
+<h4> Names: {{ first_name }} {{ last_name }}</h4>
+<h4> Department: {{ department }}</h4>
+<h4> Email address: {{ email_address }}</h4>
+<hr>
+<h3> With "Dict" it looks like this: </h3>
+<h4> {{  person.first_name }}</h4>
+<h4> {{  person.last_name }}</h4>
+<hr>
+<h3> With "Class" it looks like this: </h3>
+<h4> {{ person_obj.first_name }} </h4>
+<h4> {{ person_obj.last_name }} </h4>
+<h4> {{ person_obj.full_name }} </h4>
+<hr>
+<h3> Filters: </h3>
+<h4> {{ person_obj.full_name }}</h4>
+<h4> {{ person_obj.full_name|truncatechars:3 }}</h4>
+<h4> The length of the list is: {{ numbers|length }}</h4>
+<h4> Is the length of my list 5? {{ numbers|length_is:"5" }}</h4>
+<h4> The names joined by comma: {{ names|join:", " }}</h4>
+<h4 style="color: green;"> A random name from the names list would be [ {{ names|random }}] </h4>
+<h4> The person age is: {{ new_person.age }}</h4>
+<h4> The person age is Unknown if None: {{ new_person.age|default:"Unknown" }}</h4>
+<hr>
+<h3> Displayed as "Dict"</h3>
+<h4> New person dict {{ new_person_dict }}</h4>
+<hr>
+<h3> Tags </h3>
+{% if numbers %}
+    <p>
+        <b>
+            {{ numbers|join:":" }}
+        </b>
+    </p>
+{% elif numbers|length == 0 %}
+    <p>
+        There are no numbers!
+    </p>
+{% endif %}
+
+{% for number in numbers %}
+    <ul>
+        <li>
+            The current number is {{ number }}
+        </li>
+    </ul>
+{% empty %}
+    <p>
+        There are no numbers!
+    </p>
+{% endfor %}
+
+<ol>
+    {% for number in numbers %}
+        {% if number < 3 %}
+            <li class="young">
+                The current number is: {{ number }}
+            </li>
+        {% else %}
+            <li class="not-that-young">
+                The current number is: {{ number }}
+            </li>
+        {% endif %}
+    {% endfor %}
+</ol>
+
+{% for number in numbers %}
+    <li>
+        <a href="{% url 'index' %}?age={{ number }}">{{ number }}</a>
+    </li>
+{% endfor %}
+
+<hr>
+<h3 style="color: crimson">
+    CSRF token is {{ csrf_token }}
+</h3>
