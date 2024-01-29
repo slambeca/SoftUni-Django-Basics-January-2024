@@ -29,6 +29,9 @@ class Pet(models.Model):
         editable=False,  # Only in the Django app, not in the DB, No need for migrations
     )
 
+    def __str__(self):
+        return self.name
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         if not self.slug:  # slugify(My Name) -> My-Name
