@@ -1,0 +1,44 @@
+{#<form action="/" method="post"> <! By default action=CURRENT_URL, method=get >#}
+    {# Form Fields #}
+    {# Inputs #}
+{#    <input type="text" name="first_name">#}
+{#    <input type="number" name="age">#}
+{#    <input type="url" name="blog">#}
+{#    <input type="email" name="personal_email">#}
+{#    <input type="range">#}
+{#    <input type="password">#}
+{#    <input type="hidden">#}
+{#    <input type="radio" name="gender">#}
+{#    <input type="checkbox" name="interests">#}
+{##}
+    {# Text Area #}
+{#    <textarea name="description">#}
+        {# Multi-line Text #}
+{#    </textarea>#}
+{##}
+    {# Dropdowns #}
+{#    <select name="interests">#}
+{#        <option value="Sports">Sports</option>#}
+{#        <option value="Gaming">Gaming</option>#}
+{#        <option value="Books">Books</option>#}
+{#        <option value="Movies">Movies</option>#}
+{##}
+{#    </select>#}
+{#    <button>#}
+{#        Send#}
+{#    </button>#}
+{# Old school, not in use anymore:  #}
+{#    <input type="submit" value="Send">#}
+{##}
+{#</form>#}
+
+<h1>Hello, my name is Bobi.</h1>
+<h2>This is my forms exercise.</h2>
+
+<form action="">
+    {{ employee_form.as_p }}
+    <button style="background-color: lightgrey; width: 100px; height: 30px">Send</button>
+
+    <p><b>The csrf_token is always different, but this time, it is as follows:</b></p>
+    {{ csrf_token }}
+</form>
