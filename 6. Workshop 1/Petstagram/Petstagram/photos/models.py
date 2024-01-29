@@ -4,7 +4,7 @@ from django.db import models
 
 from Petstagram.pets.models import Pet
 
-
+# This code is more flexible
 # class MaxFileSizeValidator(BaseValidator):
 #     def clean(self, x):
 #         return x.size
