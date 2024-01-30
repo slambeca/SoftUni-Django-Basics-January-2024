@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'detailspage.css' %}">
+<body>
+    <h1>{{ my_member.first_name }} {{ my_member.last_name }}</h1>
+    <hr>
+    <p>Phone: {{ my_member.phone }}</p>
+    <p>Member since: {{ my_member.date_joined }}</p>
+    <p><b>Car brand:</b> {{ my_member.car_brand }}</p>
+    <p><b>Car model:</b> {{ my_member.car_model }}</p>
+
+    <p>Back to <a href="/members">Members</a></p>
+    <h3><a href="/">Home</a></h3>
+    <p>&copy; 2024 Petroliciouso. All rights reserved.</p>
+    <hr>
+</body>

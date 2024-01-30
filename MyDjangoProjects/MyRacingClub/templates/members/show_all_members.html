@@ -1,0 +1,18 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'allmemberspage.css' %}">
+<body>
+    <h1>Members in the Petroliciouso Racing Club</h1>
+    <hr>
+    <h2>First and last name:</h2>
+
+    <ol>
+        {% for member in my_members %}
+            <li> <a href="details/{{ member.id }}">{{ member.first_name}} {{ member.last_name }}</a></li>
+        {% empty %}
+            <p>There are no members to display.</p>
+        {% endfor %}
+    </ol>
+    <h4>Click on the name for more information.</h4>
+    <h3><a href="/">Home</a></h3>
+    <p>&copy; 2024 Petroliciouso. All rights reserved.</p>
+</body>
