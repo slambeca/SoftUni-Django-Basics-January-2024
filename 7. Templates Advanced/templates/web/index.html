@@ -1,0 +1,18 @@
+{% extends 'master.html' %}
+{% load user_tags %}
+
+{% load list_tags %}
+
+{% load number_filters %}
+
+{% block main_content %}
+    <h2 style="color: crimson">Hello from the inheritor template!</h2>
+    <h2>This is {{ car_name|lower|title }}</h2>
+    <img src="{{ car_image }}"
+         alt="This is a picture of a BMW M5" height=300px>
+    <p>{% list_of numbers %} </p>
+    <p> {{ numbers|only_odd }}</p>
+    <p> {{ numbers|only_even }}</p>
+    <h2> Current time is: {% current_time %}</h2>
+{#    {% show_user %}#}
+{% endblock %}
