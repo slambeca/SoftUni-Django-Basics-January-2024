@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.db import models
@@ -31,4 +32,8 @@ class Person(models.Model):
 
     age = models.PositiveSmallIntegerField()
 
-
+    # created_by = models.ForeignKey(
+    #     User,
+    #     on_delete=models.DO_NOTHING,
+    #     null=True,
+    # )

@@ -1,14 +1,26 @@
-<h1>Create form</h1>
-<form action="">
-    {{ person_form.as_p }}
+<h1 style="color: blue">Create form (raw)</h1>
+<form action="{%  url 'create_person' %}" method="post">
+    {{ person_form }}
+
+    {% csrf_token %}
+
+    <button>Create </button>
 </form>
 <hr>
-<h1>Update form</h1>
-<form action="">
+<h1 style="color: blueviolet">Update form (as_p)</h1>
+<form action="{% url 'index' %}" method="post">
     {{ update_person_form.as_p }}
+
+    {% csrf_token %}
+
+    <button>Update</button>
 </form>
 <hr>
-<h1>New update form</h1>
-<form action="">
-    {{ new_update_person_form.as_p }}
+<h1 style="color: forestgreen">New update form (as_table)</h1>
+<form action="{% url 'index' %}" method="post">
+    {{ new_update_person_form.as_table }}
+
+    {% csrf_token %}
+
+    <button>New Update</button>
 </form>
