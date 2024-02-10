@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block main_content %}
+    <div class="container">
+        <div class="col-9">
+            {% include "partials/pet-list-item.html" with photo=pet_photo %}
+
+        </div>
+    </div>
+
+{% endblock %}
