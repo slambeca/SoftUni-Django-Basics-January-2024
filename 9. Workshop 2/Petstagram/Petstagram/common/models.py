@@ -21,7 +21,8 @@ class PhotoComment(models.Model):
     )
 
     pet_photo = models.ForeignKey(
-        PetPhoto, on_delete=models.DO_NOTHING
+        PetPhoto,
+        on_delete=models.RESTRICT,
     )
 
     # user = models.ForeignKey(User)

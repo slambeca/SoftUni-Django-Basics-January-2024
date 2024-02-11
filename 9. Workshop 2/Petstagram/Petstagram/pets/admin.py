@@ -7,4 +7,4 @@ from Petstagram.pets.models import Pet
 
 @admin.register(Pet)
 class PetAdmin(admin.ModelAdmin):
-    list_display = ("name", "date_of_birth", "slug")
+    list_display = ("name", "date_of_birth", "slug", "pet_photo")

@@ -1,10 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
+from Petstagram.pets.forms import PetCreateForm, PetEditForm, PetBaseForm, PetDeleteForm
 from Petstagram.pets.models import Pet
 
 
 def create_pet(request):
-    context = {}
+    pet_form = PetCreateForm(request.POST or None)
+    # We can change the PetCreateForm with PetBaseForm
+
+    if request.method == "POST":
+        if pet_form.is_valid():
+            created_pet = pet_form.save()
+            return redirect("details pet", username="Doncho", pet_slug=created_pet.slug)
+
+    context = {
+        "pet_form": pet_form,
+    }
 
     return render(request, "pets/pet-add-page.html", context)
 
@@ -18,12 +29,37 @@ def details_pet(request, username, pet_slug):
 
 
 def delete_pet(request, username, pet_slug):
-    context = {}
+    pet = Pet.objects.get(slug=pet_slug)
+
+    pet_form = PetDeleteForm(request.POST or None, instance=pet)
+
+    if request.method == "POST":
+        pet_form.save()
+        return redirect("index")
+
+    context = {
+        "pet_form": pet_form,
+        "username": username,
+        "pet": pet,
+    }
 
     return render(request, "pets/pet-delete-page.html", context)
 
 
 def edit_pet(request, username, pet_slug):
-    context = {}
+    pet = Pet.objects.filter(slug=pet_slug).get()
+
+    pet_form = PetEditForm(request.POST or None, instance=pet)
+
+    if request.method == "POST":
+        if pet_form.is_valid():
+            pet_form.save()
+            return redirect('details pet', username=username, pet_slug=pet_slug)
+
+    context = {
+        "pet_form": pet_form,
+        "username": username,
+        "pet": pet,
+    }
 
     return render(request, "pets/pet-edit-page.html", context)

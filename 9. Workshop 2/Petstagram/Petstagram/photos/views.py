@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+from Petstagram.common.models import PhotoLike
 from Petstagram.photos.models import PetPhoto
 
 
