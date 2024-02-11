@@ -27,35 +27,28 @@
                     <img src="{% static '/images/cat-photo.jpg' %}" alt="post" class="cover">
                     {# <img src="{{ photo.photo.url }}" alt="post" class="cover" #}
                 </div>
-                <!-- End Pet Photo -->
 
-                <!-- Start Like and Share Buttons -->
                 <div class="bottom">
                     <div class="actionBtns">
                         <div class="left">
-                            <!-- Start Like Button -->
                             <span class="heart">
-                                <a href="#">
-                                    <!-- if user has liked the photo -->
+                                <a href="{% url 'like pet photo' pk=photo.pk %}">
+                                    {% if photo.photolike_set.count > 0 %}
                                     <i class="fa-solid fa-heart" style="color: #ed4040;"></i>
-                                    <!-- else -->
+                                    {% else %}
                                     <i class="fa-regular fa-heart"></i>
+                                    {% endif %}
                                 </a>
                             </span>
-                            <!-- End Like Button -->
 
-                            <!-- Start Share Button -->
                             <a href="#">
                                 <i class="fa-solid fa-share"></i>
                             </a>
-                            <!-- End Share Button -->
 
                         </div>
                     </div>
-                    <!-- End Like and Share Buttons -->
 
-                    <!-- Number of Likes per Photo -->
-                    <p class="likes">203 likes</p>
+                    <p class="likes">{{ photo.photolike_set.count }} likes</p>
 
                     {% for pet in photo.pets.all %}    {# This does not execute the QuerySet #}
                     <a href="{% url 'details pet' username='Doncho' pet_slug=pet.slug %}">
@@ -76,17 +69,14 @@
                     <!-- Start Add Comments Section -->
                     <div class="addComments">
 
-                        <!-- Start Add Comments Form -->
                         <form method="post" action="#">
                             <label for="id_body">Body:</label>
                             <textarea name="body" cols="40" rows="10" placeholder="Add comment" maxlength="300"
                                       required="" id="id_body"></textarea>
                             <button type="submit">Post</button>
                         </form>
-                        <!-- End Add Comments Form -->
 
                     </div>
-                    <!-- End Add Comments Section -->
 
                 </div>
             </div>
