@@ -8,8 +8,9 @@
     <p><b>Car brand:</b> {{ my_member.car_brand }}</p>
     <p><b>Car model:</b> {{ my_member.car_model }}</p>
 
-    <p>Back to <a href="/members">Members</a></p>
+{#    <p>Back to <a href="/members">Members</a></p>#}
+    <button onclick="history.back()">Go Back to members</button>
     <h3><a href="/">Home</a></h3>
-    <p>&copy; 2024 Petroliciouso. All rights reserved.</p>
+    {% include "partials/footer.html" %}
     <hr>
 </body>

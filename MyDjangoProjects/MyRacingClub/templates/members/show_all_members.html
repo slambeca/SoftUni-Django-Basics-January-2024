@@ -1,10 +1,17 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'allmemberspage.css' %}">
-<body>
-    <h1>Members in the Petroliciouso Racing Club</h1>
-    <hr>
-    <h2>First and last name:</h2>
 
+
+<head>
+    <link rel="stylesheet" href="{% static 'allmemberspage.css' %}">
+    <title></title>
+</head>
+
+<body>
+    <h1 style="color: darkblue">Members in the Petroliciouso Racing Club</h1>
+    <hr>
+    <p>Currently, we have {{ count_members }} members!</p>
+    <h2>First and last name:</h2>
+    <h5 style="color: darkslateblue">Click on the name for more information.</h5>
     <ol>
         {% for member in my_members %}
             <li> <a href="details/{{ member.id }}">{{ member.first_name}} {{ member.last_name }}</a></li>
@@ -12,7 +19,9 @@
             <p>There are no members to display.</p>
         {% endfor %}
     </ol>
-    <h4>Click on the name for more information.</h4>
+
     <h3><a href="/">Home</a></h3>
-    <p>&copy; 2024 Petroliciouso. All rights reserved.</p>
+    {% include "partials/footer.html" %}
+    <hr>
+    <img height=199 width=400 src="{% static 'images/members.jpg' %}" alt="Members picture">
 </body>

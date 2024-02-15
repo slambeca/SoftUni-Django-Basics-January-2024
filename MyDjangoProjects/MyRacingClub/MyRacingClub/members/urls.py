@@ -6,5 +6,4 @@ urlpatterns = (
     path("", main_page, name="main page"),
     path("members/", say_hello_to_members, name="say hello to members"),
     path("members/details/<int:id>", details, name="details"),
-
 )

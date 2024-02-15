@@ -8,6 +8,7 @@ def say_hello_to_members(request):
     my_members = Member.objects.all().order_by("first_name").values()
     context = {
         "my_members": my_members,
+        "count_members": my_members.count(),
     }
     return render(request, "members/show_all_members.html", context)
 
