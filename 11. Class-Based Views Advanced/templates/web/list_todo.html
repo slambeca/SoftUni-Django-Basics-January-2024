@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {{ object_list.as_table }}
+    <hr>
+    {{ todo_list }}
+    <hr>
+    <h1>{{ title }}</h1>
+
+    <form action="{% url 'index' %}" method="get">
+        {{ search_form.as_p }}
+
+        <button class="search-button">Search</button>
+
+        <hr>
+
+        {% csrf_token %}    {# GET requests do not require CSRF tokens #}
+    </form>
+
+    <ol>
+        {% for todo in todo_list %}
+            <li>
+                <a href="{% url 'todos details' pk=todo.pk %}">{{ todo.title }} - {{ todo.description }}</a>
+            </li>
+        {% endfor %}
+    </ol>
+
+{% endblock %}
