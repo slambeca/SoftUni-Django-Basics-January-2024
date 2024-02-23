@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+{% if fruits %}
+    <h2>Fruits</h2>
+{% endif %}
+
+<section id="dashboard">
+    {% for fruit in fruits %}
+        <div class="fruit">
+            <img src="{{ fruit.image_url }}" alt="{{ fruit.name }} img"/>
+            <h3 class="title">{{ fruit.fruit_name }}</h3>
+            <p class="description">{{ fruit.description|truncatechars:50 }}</p>
+            <a class="details-btn" href="{% url 'details_fruit' fruit_id=fruit.id %}">More Info</a>
+        </div>
+        {% empty %}
+        <h2>No fruit info yet.</h2>
+    {% endfor %}
+</section>
+{% endblock %}
