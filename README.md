@@ -22,3 +22,4 @@ In the "Python Web" module, the foundation of web-based technologies and the mos
 * Working with users and roles
 
 # Certificate and Course Cirriculum
+![Django Basics - January 2024 - Certificate](https://github.com/slambeca/SoftUni-Django-Basics-January-2024/assets/95913250/06296275-38d6-42c9-9a34-de67dfd5b98e)
