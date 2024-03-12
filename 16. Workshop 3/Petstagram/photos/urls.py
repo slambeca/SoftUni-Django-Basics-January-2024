@@ -1,10 +1,10 @@
 from django.urls import path
 
-from Petstagram.photos.views import create_photo, details_photo, edit_photo
+from Petstagram.photos.views import PetPhotoCreateView, PetPhotoDetailView, PetPhotoEditView
 
 
 urlpatterns = (
-    path("create/", create_photo, name="create photo"),
-    path("<int:pk>/", details_photo, name="details photo"),
-    path("<int:pk>/edit/", edit_photo, name="edit photo"),
+    path("create/", PetPhotoCreateView.as_view(), name="create photo"),
+    path("<int:pk>/", PetPhotoDetailView.as_view(), name="details photo"),
+    path("<int:pk>/edit/", PetPhotoEditView.as_view(), name="edit photo"),
 )
